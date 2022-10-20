@@ -6,6 +6,15 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" :key="photo" v-for="photo in photos">
+            <ion-img :src="photo.webviewPath"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
       <ion-fab vertical="bottom" horizontal="center" slot="fixed">
         <ion-fab-button @click="takePhoto()">
           <ion-icon :icon="camera"></ion-icon>
@@ -18,7 +27,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { camera, trash, close } from 'ionicons/icons';
-import {   IonPage, IonHeader, IonFab, IonFabButton, IonIcon, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg } from '@ionic/vue';
+import { IonPage, IonHeader, IonFab, IonFabButton, IonIcon, IonToolbar, IonTitle, IonContent, 
+         IonGrid, IonRow, IonCol, IonImg } from '@ionic/vue';
+import { usePhotoGallery, UserPhoto } from '@/composables/usePhotoGallery';
 
 export default defineComponent({
   name: 'Tab2Page',
@@ -26,7 +37,11 @@ export default defineComponent({
     //IonGrid, IonRow, IonCol, IonImg, 
   },
   setup() {
+    const { photos, takePhoto } = usePhotoGallery();
+
     return {
+      photos,
+      takePhoto,
       camera,
       trash,
       close
