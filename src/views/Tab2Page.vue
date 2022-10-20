@@ -14,7 +14,6 @@
         </ion-row>
       </ion-grid>
 
-
       <ion-fab vertical="bottom" horizontal="center" slot="fixed">
         <ion-fab-button @click="takePhoto()">
           <ion-icon :icon="camera"></ion-icon>
@@ -34,7 +33,7 @@ import { usePhotoGallery, UserPhoto } from '@/composables/usePhotoGallery';
 export default defineComponent({
   name: 'Tab2Page',
   components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonFab, IonFabButton, IonIcon, 
-    //IonGrid, IonRow, IonCol, IonImg, 
+    IonGrid, IonRow, IonCol, IonImg, 
   },
   setup() {
     const { photos, takePhoto } = usePhotoGallery();

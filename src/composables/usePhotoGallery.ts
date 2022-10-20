@@ -3,6 +3,7 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Preferences } from '@capacitor/preferences';
 import { isPlatform } from '@ionic/vue';
+import { Capacitor } from '@capacitor/core';
 
 export function usePhotoGallery() {
     const PHOTO_STORAGE = 'photos';
@@ -64,7 +65,7 @@ export function usePhotoGallery() {
           // already loaded into memory
           return {
             filepath: fileName,
-            webviewPath: photo.webPath,
+            webviewPath: Capacitor.convertFileSrc(savedFile.uri),
           };
         }
       };
